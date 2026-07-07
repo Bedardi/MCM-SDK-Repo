@@ -10,23 +10,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # 1. Latest v4 checkout action use kar rahe hain
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
+    # 2. Latest v4 Java setup action
     - name: Set up JDK 17
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
 
+    # 3. Latest v4 Gradle setup action (Jo bina gradlew wrapper ke chalega)
     - name: Setup Gradle Build Environment
-      uses: gradle/actions/setup-gradle@v3
+      uses: gradle/actions/setup-gradle@v4
+      with:
+        gradle-version: '8.4'
 
+    # 4. Library ko compile karne ka step
     - name: Build the AAR Library
       run: gradle :mcm-sdk:assembleRelease
 
+    # 5. Latest v4 Artifact upload action (Jo build file download karne dega)
     - name: Upload Library Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: mcm-sdk-release-aar
         path: mcm-sdk/build/outputs/aar/
