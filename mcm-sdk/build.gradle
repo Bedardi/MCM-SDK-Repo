@@ -1,0 +1,22 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace 'com.mistahub.mcm_sdk'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 34
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation "androidx.work:work-runtime:2.9.0"
+    implementation "com.squareup.okhttp3:okhttp:4.12.0"
+}
